@@ -43,6 +43,8 @@ namespace noa{
         
         Graph& operator++() ;
         Graph& operator--();
+        Graph& operator++(int dummy);
+        Graph& operator--(int dummy);
 
         Graph& operator/=(int a);
         Graph& operator*=(int a);

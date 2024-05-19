@@ -258,11 +258,15 @@ TEST_CASE("test graph ++ "){
     g1.loadGraph(graph);
     ++g1;
     vector<vector<int>> expectedGraph = {
-        {1, 0, 3},
-        {2, 1, -1},
-        {-3, 1, 1}};
+        {0, 0, 3},
+        {2, 0, -1},
+        {-3, 0, 0}};
     noa::Graph ge;
     ge.loadGraph(expectedGraph);
+    CHECK(noa::Graph::printGraph(g1) == noa::Graph::printGraph(ge));
+    CHECK(g1.getEdge() == ge.getEdge());
+    g1++;
+    ++ge;
     CHECK(noa::Graph::printGraph(g1) == noa::Graph::printGraph(ge));
     CHECK(g1.getEdge() == ge.getEdge());
 }
@@ -276,11 +280,15 @@ TEST_CASE("test graph -- "){
     g1.loadGraph(graph);
     --g1;
     vector<vector<int>> expectedGraph = {
-        {-1, -2, 1},
-        {0, -1, -3},
-        {-5, -1, -1}};
+        {0, -2, 1},
+        {0, 0, -3},
+        {-5, 0, 0}};
     noa::Graph ge;
     ge.loadGraph(expectedGraph);
+    CHECK(noa::Graph::printGraph(g1) == noa::Graph::printGraph(ge));
+    CHECK(g1.getEdge() == ge.getEdge());
+    g1--;
+    --ge;
     CHECK(noa::Graph::printGraph(g1) == noa::Graph::printGraph(ge));
     CHECK(g1.getEdge() == ge.getEdge());
 }

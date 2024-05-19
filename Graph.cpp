@@ -170,26 +170,62 @@ namespace noa{
         return ng;
     }
         
-    Graph& Graph::operator++(){ // add one to all the whgeites in the graph
+    Graph& Graph::operator++(){ // add one to all the whgeites in the graph prefix
         unsigned int size1 = static_cast<unsigned int>(this->size);
         for(unsigned int i=0; i<size1; ++i){
             for(unsigned int j=0; j<size1; ++j){
-                g[i][j]++;
+                if(g[i][j] != 0){
+                    g[i][j]++;
+                }
             }
         }
         this->update();
         return *this;
     }
 
-    Graph& Graph::operator--(){ // minus one from all the whgeites in the graph
+    Graph& Graph::operator--(){ // minus one from all the whgeites in the graph prefix
         unsigned int size1 = static_cast<unsigned int>(this->size);
         for(unsigned int i=0; i<size1; ++i){
             for(unsigned int j=0; j<size1; ++j){
-                g[i][j]--;
+                if(g[i][j] != 0){
+                    g[i][j]--;
+                }
             }
         }
         this->update();
         return *this;
+    }
+
+    Graph& Graph::operator++(int dummy){ // add one to all the whgeites in the graph postfix
+        Graph cp = loadGraph(this->g);
+        Graph& copy = cp;
+        dummy++;
+        unsigned int size1 = static_cast<unsigned int>(this->size);
+        for(unsigned int i=0; i<size1; ++i){
+            for(unsigned int j=0; j<size1; ++j){
+                if(g[i][j] != 0){
+                    g[i][j]++;
+                }
+            }
+        }
+        this->update();
+        return copy;
+    }
+
+    Graph& Graph::operator--(int dummy){ // minus one from all the whgeites in the graph postfix
+        Graph cp = loadGraph(this->g);
+        Graph& copy = cp;
+        dummy++;
+        unsigned int size1 = static_cast<unsigned int>(this->size);
+        for(unsigned int i=0; i<size1; ++i){
+            for(unsigned int j=0; j<size1; ++j){
+                if(g[i][j] != 0){
+                    g[i][j]--;
+                }
+            }
+        }
+        this->update();
+        return copy;
     }
 
     Graph& Graph::operator/=(int a){ // divide all the weightes in the graph by a

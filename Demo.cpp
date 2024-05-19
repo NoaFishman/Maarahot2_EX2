@@ -49,10 +49,16 @@ int main()
     -g8; // minus unari (multiple the matrix by -1)
     cout << g8 << endl;
 
-    ++g8; // add 1 to all the valus in the matrix
+    ++g8; // add 1 to all the valus in the matrix prefix
     cout << g8 << endl;
 
-    --g8; // minus 1 to all the valus in the matrix
+    g8++; // add 1 to all the valus in the matrix postfix
+    cout << g8 << endl;
+
+    --g8; // minus 1 to all the valus in the matrix prefix
+    cout << g8 << endl;
+    
+    g8--; // minus 1 to all the valus in the matrix postfix
     cout << g8 << endl;
     
     if (g4 > g1){ // check if g4 > from g1 and print it 
@@ -86,7 +92,7 @@ int main()
     }
     catch (const std::invalid_argument &e)
     {
-        cout << e.what() << endl; // Should print "The number of columns in the first matrix must be equal to the number of rows in the second matrix."
+        cout << e.what() << endl; // Should print "the Graphs are not in the same size"
     }
 
     return 0;
